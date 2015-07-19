@@ -11,8 +11,8 @@
   },
 
   "frameworks": {
-    "net451": { },
-    "dnx451": { }
+    "net452": { },
+    "dnx452": { }
     //"dnxcore50": {
     //  "dependencies": {
     //    "System.Collections": "4.0.10-beta-22816",
