@@ -1,0 +1,45 @@
+{
+  "locked": false,
+  "version": -9998,
+  "projectFileDependencyGroups": {
+    "": [
+      "TileProj >= 0.1.0"
+    ],
+    ".NETFramework,Version=v4.5.1": [],
+    "DNX,Version=v4.5.1": []
+  },
+  "libraries": {
+    "TileProj/0.1.0": {
+      "serviceable": false,
+      "sha": "TlF0iQ2BO4hvDAlRLhYnTMX2C1XUOq65NoA/6V9UQ6phm9eE0VBKYfBqUY2eSEGJJIHB4yE+WA7Ky3YHEwKPAA==",
+      "frameworks": {
+        ".NETFramework,Version=v4.5.1": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/net45/TileProj.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net45/TileProj.dll"
+          ]
+        },
+        "DNX,Version=v4.5.1": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/net45/TileProj.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net45/TileProj.dll"
+          ]
+        }
+      },
+      "files": [
+        "TileProj.0.1.0.nupkg",
+        "TileProj.0.1.0.nupkg.sha512",
+        "TileProj.nuspec",
+        "lib/net45/TileProj.dll"
+      ]
+    }
+  }
+}
