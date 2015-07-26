@@ -6,10 +6,8 @@ namespace TileCook
     {
         VectorTile GetTile(ICoord coord);
 
-        double MinZoom { get; }
-        double MaxZoom { get; }
-        string Scheme { get; }
-        IPoint Center { get; }
+        int MinZoom { get; }
+        int MaxZoom { get; }
         IEnvelope Bounds { get; }
     }
 }
