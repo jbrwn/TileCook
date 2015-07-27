@@ -3,66 +3,17 @@
   "version": -9998,
   "projectFileDependencyGroups": {
     "": [
-      "TileProj >= 0.1.0"
+      "TileProj >= 0.3.0"
     ],
-    ".NETFramework,Version=v4.5.2": [],
-    "DNX,Version=v4.5.2": []
+    ".NETFramework,Version=v4.5.1": [],
+    "DNX,Version=v4.5.1": []
   },
   "libraries": {
-    "TileCook/0.1.0": {
+    "TileProj/0.3.0": {
       "serviceable": false,
-      "sha": "xavEdwIDDPlcamUAGiYJ0NERiqsIWR9irSWh5yVkOHOjmAio8avDdZD8L/QIpX6zVOT85v5QeTW7/odT/etnUA==",
+      "sha": "PUtRFRt76oOGzDRJ+gLqiR/uhJOthxQWYI00TqaDoLajGFmC8I4QUWvx4Eio5N44pWv+BIHKLdogiivwxcEt8g==",
       "frameworks": {
-        ".NETFramework,Version=v4.5.2": {
-          "dependencies": {
-            "TileProj": "0.1.0"
-          },
-          "frameworkAssemblies": [
-            "mscorlib",
-            "System",
-            "System.Core",
-            "Microsoft.CSharp"
-          ],
-          "runtimeAssemblies": [
-            "lib/net451/TileCook.dll"
-          ],
-          "compileAssemblies": [
-            "lib/net451/TileCook.dll"
-          ]
-        },
-        "DNX,Version=v4.5.2": {
-          "dependencies": {
-            "TileProj": "0.1.0"
-          },
-          "frameworkAssemblies": [
-            "mscorlib",
-            "System",
-            "System.Core",
-            "Microsoft.CSharp"
-          ],
-          "runtimeAssemblies": [
-            "lib/dnx451/TileCook.dll"
-          ],
-          "compileAssemblies": [
-            "lib/dnx451/TileCook.dll"
-          ]
-        }
-      },
-      "files": [
-        "TileCook.0.1.0.nupkg",
-        "TileCook.0.1.0.nupkg.sha512",
-        "TileCook.nuspec",
-        "lib/dnx451/TileCook.dll",
-        "lib/dnx451/TileCook.xml",
-        "lib/net451/TileCook.dll",
-        "lib/net451/TileCook.xml"
-      ]
-    },
-    "TileProj/0.1.0": {
-      "serviceable": false,
-      "sha": "TlF0iQ2BO4hvDAlRLhYnTMX2C1XUOq65NoA/6V9UQ6phm9eE0VBKYfBqUY2eSEGJJIHB4yE+WA7Ky3YHEwKPAA==",
-      "frameworks": {
-        ".NETFramework,Version=v4.5.2": {
+        ".NETFramework,Version=v4.5.1": {
           "dependencies": {},
           "frameworkAssemblies": [],
           "runtimeAssemblies": [
@@ -72,7 +23,7 @@
             "lib/net45/TileProj.dll"
           ]
         },
-        "DNX,Version=v4.5.2": {
+        "DNX,Version=v4.5.1": {
           "dependencies": {},
           "frameworkAssemblies": [],
           "runtimeAssemblies": [
@@ -84,8 +35,8 @@
         }
       },
       "files": [
-        "TileProj.0.1.0.nupkg",
-        "TileProj.0.1.0.nupkg.sha512",
+        "TileProj.0.3.0.nupkg",
+        "TileProj.0.3.0.nupkg.sha512",
         "TileProj.nuspec",
         "lib/net45/TileProj.dll"
       ]
