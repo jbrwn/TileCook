@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TileCook
 {
-    public class VectorTileInfo
+    public class VectorLayer
     {
         public string Id { get; set; }
         public string Description { get; set; }

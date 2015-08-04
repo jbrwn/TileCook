@@ -20,7 +20,7 @@ namespace TileCook.Test
         public int MinZoom { get; set; }
         public int MaxZoom { get; set; }
         public IEnvelope Bounds { get; set; }
-        public VectorTileInfo VectorLayers { get; set; }
+        public IEnumerable<VectorLayer> VectorLayers { get; set; }
     }
 
     public class MockWritableStore : IWritableTileStore
@@ -38,7 +38,7 @@ namespace TileCook.Test
         public string Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public VectorTileInfo VectorLayers { get; set; }
+        public IEnumerable<VectorLayer> VectorLayers { get; set; }
         public int MinZoom { get; set; }
         public int MaxZoom { get; set; }
         public IEnvelope Bounds { get; set; }

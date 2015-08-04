@@ -1,4 +1,5 @@
 ﻿using TileProj;
+using System.Collections.Generic;
 
 namespace TileCook
 {
@@ -12,6 +13,6 @@ namespace TileCook
         int MinZoom { get; }
         int MaxZoom { get; }
         IEnvelope Bounds { get; }
-        VectorTileInfo VectorLayers { get; }
+        IEnumerable<VectorLayer> VectorLayers { get; }
     }
 }
