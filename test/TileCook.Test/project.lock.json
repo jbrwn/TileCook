@@ -740,6 +740,55 @@
         "lib/portable-net45+win8/System.Reflection.Metadata.xml"
       ]
     },
+    "TileCook/0.1.0": {
+      "serviceable": false,
+      "sha": "9S6SUAImqhVXp/9az8awEW5Nw0sMmTsVhiMUxO91mfAhUKjeQSyK24zgzlcyrkOFHNl6vqkM575NQPZWDp+ltA==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {
+            "TileProj": "0.3.0"
+          },
+          "frameworkAssemblies": [
+            "mscorlib",
+            "System",
+            "System.Core",
+            "Microsoft.CSharp"
+          ],
+          "runtimeAssemblies": [
+            "lib/dnx451/TileCook.dll"
+          ],
+          "compileAssemblies": [
+            "lib/dnx451/TileCook.dll"
+          ]
+        },
+        ".NETFramework,Version=v4.5.1": {
+          "dependencies": {
+            "TileProj": "0.3.0"
+          },
+          "frameworkAssemblies": [
+            "mscorlib",
+            "System",
+            "System.Core",
+            "Microsoft.CSharp"
+          ],
+          "runtimeAssemblies": [
+            "lib/net451/TileCook.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net451/TileCook.dll"
+          ]
+        }
+      },
+      "files": [
+        "TileCook.0.1.0.nupkg",
+        "TileCook.0.1.0.nupkg.sha512",
+        "TileCook.nuspec",
+        "lib/dnx451/TileCook.dll",
+        "lib/dnx451/TileCook.xml",
+        "lib/net451/TileCook.dll",
+        "lib/net451/TileCook.xml"
+      ]
+    },
     "TileProj/0.3.0": {
       "serviceable": false,
       "sha": "PUtRFRt76oOGzDRJ+gLqiR/uhJOthxQWYI00TqaDoLajGFmC8I4QUWvx4Eio5N44pWv+BIHKLdogiivwxcEt8g==",

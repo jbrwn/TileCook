@@ -7,12 +7,9 @@ namespace TileCook
 {
     public class MemoryTileStoreRepository : ITileStoreRepository 
     {
-        private static ConcurrentDictionary<string, ITileStore> MemoryRepo;
+        private static ConcurrentDictionary<string, ITileStore> MemoryRepo = new ConcurrentDictionary<string, ITileStore>();
 
-        public MemoryTileStoreRepository()
-        {
-            MemoryRepo = new ConcurrentDictionary<string, ITileStore>();
-        }
+        public MemoryTileStoreRepository() {}
 
         public void AddOrUpdate(ITileStore tilestore)
         {
