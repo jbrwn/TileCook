@@ -6,12 +6,17 @@ namespace TileCook
     {
         public static void Copy(this ITileStore source, IWritableTileStore target)
         {
+            // set target metadata
+            var info = source.GetTileInfo();
+            target.SetTileInfo(info);
+            
             SphericalMercator sm = new SphericalMercator();
-
+            
             //scanline
-            for (int i = target.MinZoom; i <= target.MaxZoom; i++)
+            for (int i = info.MinZoom; i <= info.MaxZoom; i++)
             {
-                IEnvelope env = sm.LongLatToXY(target.Bounds);
+                IEnvelope bounds = new Envelope(info.Bounds[0], info.Bounds[1], info.Bounds[2], info.Bounds[3]);
+                IEnvelope env = sm.LongLatToXY(bounds);
                 ICoord LL = sm.PointToCoord(env.LL, i);
                 ICoord UR = sm.PointToCoord(env.UR, i);
 
@@ -19,11 +24,10 @@ namespace TileCook
                 {
                     for (int k = LL.Y; k >= UR.Y; k--)
                     {
-                        ICoord coord = new Coord(i, j, k);
-                        VectorTile tile = source.GetTile(coord);
+                        ITile tile = source.GetTile(i, j, k);
                         if (tile != null)
                         {
-                            target.PutTile(coord, tile);
+                            target.PutTile(i, j, k, tile);
                         }
                     }
                 }

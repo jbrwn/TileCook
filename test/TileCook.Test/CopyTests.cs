@@ -3,46 +3,47 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
-using TileProj;
 using TileCook;
 
 namespace TileCook.Test
 {
     public class MockStore : ITileStore
     {
-        public VectorTile GetTile(ICoord coord)
+        public ITile GetTile(int z, int x, int y)
         {
-            return new VectorTile(new byte[0]);
+            return new Tile(new byte[0]);
         }
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public int MinZoom { get; set; }
-        public int MaxZoom { get; set; }
-        public IEnvelope Bounds { get; set; }
-        public IEnumerable<VectorLayer> VectorLayers { get; set; }
+        public ITileInfo GetTileInfo()
+        {
+            return new TileInfo()
+            {
+                Bounds = new double[] {-180, -90, 180, 90},
+                MinZoom = 0,
+                MaxZoom = 5
+            };
+        }
     }
 
     public class MockWritableStore : IWritableTileStore
     {
-
-        public VectorTile GetTile(ICoord coord)
+        public int Count {get; private set;}
+        public ITile GetTile(int z, int x, int y)
         {
-            return new VectorTile(new byte[0]);
+            return new Tile(new byte[0]);
         }
-        public void PutTile(ICoord coord, VectorTile tile)
+        public void PutTile(int z, int x, int y, ITile tile)
         {
             Count++;
             return;
         }
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public IEnumerable<VectorLayer> VectorLayers { get; set; }
-        public int MinZoom { get; set; }
-        public int MaxZoom { get; set; }
-        public IEnvelope Bounds { get; set; }
-        public int Count { get; private set; }
+        public ITileInfo GetTileInfo()
+        {
+            return new TileInfo();
+        }
+        public void SetTileInfo(ITileInfo tileinfo)
+        {
+            
+        }
         
     }
 
@@ -52,12 +53,7 @@ namespace TileCook.Test
         public void Copy()
         {
             MockStore source = new MockStore();
-            MockWritableStore target = new MockWritableStore()
-            {
-                Bounds = new Envelope(-180, -90, 180, 90),
-                MinZoom = 0,
-                MaxZoom = 5
-            };
+            MockWritableStore target = new MockWritableStore();
             source.Copy(target);
             Assert.Equal(1365, target.Count);
         }

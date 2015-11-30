@@ -1,9 +1,8 @@
-﻿using TileProj;
-
-namespace TileCook
+﻿namespace TileCook
 {
     public interface IWritableTileStore : ITileStore
     {
-        void PutTile(ICoord coord, VectorTile tile);
+        void PutTile(int z, int x, int y, ITile tile);
+        void SetTileInfo(ITileInfo tileinfo);
     }
 }

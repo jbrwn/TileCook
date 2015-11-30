@@ -1,5 +1,4 @@
-﻿
-namespace TileCook
+﻿namespace TileCook
 {
     public interface ITile
     {

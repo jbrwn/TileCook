@@ -1,9 +1,9 @@
 ﻿
 namespace TileCook
 {
-    public class VectorTile : ITile
+    public class Tile : ITile
     {
-        public VectorTile(byte[] buffer)
+        public Tile(byte[] buffer)
         {
             Buffer = buffer;
         }
