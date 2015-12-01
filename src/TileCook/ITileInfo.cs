@@ -11,5 +11,6 @@ namespace TileCook
         double[] Bounds { get; set; }
         double[] Center {get; set;}
         IEnumerable<VectorLayer> VectorLayers { get; set; }
+        void Validate();
 	}
 }
