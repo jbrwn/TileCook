@@ -19,10 +19,12 @@ namespace TileCook.Test
 			Assert.Equal(14, info.MaxZoom);
 			Assert.Equal(new double[] {-180,-90,180,90}, info.Bounds);
 			Assert.Null(info.Center);
-			Assert.Null(info.VectorLayers);
+			Assert.NotNull(info.VectorLayers);
+			Assert.Equal(TileFormat.Pbf, info.Format);
+			Assert.Equal(TileScheme.Tms, info.Scheme);
         }
 		
-				[Fact]
+		[Fact]
         public void Valid_Properties()
         {
 			TileInfo info = new TileInfo()
@@ -34,14 +36,13 @@ namespace TileCook.Test
 				Bounds = new double[] {-10,-10,10,10},
 				Center = new double[] {0,0,10}
 			};
-			info.Validate();
+			Assert.True(info.IsValid());
 			Assert.Equal("test", info.Name);
 			Assert.Equal("test info", info.Description);
 			Assert.Equal(0, info.MinZoom);
 			Assert.Equal(22, info.MaxZoom);
 			Assert.Equal(new double[] {-10,-10,10,10}, info.Bounds);
 			Assert.Equal(new double[] {0,0,10}, info.Center);
-			Assert.Null(info.VectorLayers);
 		}
 		
 		[Fact]
@@ -70,19 +71,25 @@ namespace TileCook.Test
 			TileInfo info = new TileInfo();
 			info.MinZoom = 10;
 			info.MaxZoom = 0;
-			Assert.Throws<InvalidOperationException>(() => info.Validate());
+			Assert.False(info.IsValid());
 			info.MinZoom = 0;
 			info.MaxZoom = 20;
 			info.Center = new double[] {0,0,21};
-			Assert.Throws<InvalidOperationException>(() => info.Validate());
+			Assert.False(info.IsValid());
 			info.MinZoom = 0;
 			info.MaxZoom = 10;
 			info.Bounds = new double[] {-10,-10,10,10};
 			info.Center = new double[] {20,20,5};
-			Assert.Throws<InvalidOperationException>(() => info.Validate());
+			Assert.False(info.IsValid());
+			info.MinZoom = 0;
+			info.MaxZoom = 10;
+			info.Bounds = new double[] {-10,-10,10,10};
 			info.Center = new double[] {0,0,5};
-			info.Validate();
-			
+			info.Format = TileFormat.Pbf;
+			info.VectorLayers = null;
+			Assert.False(info.IsValid());
+			info.VectorLayers = new List<VectorLayer>();
+			info.IsValid();
 		}
     }
 	

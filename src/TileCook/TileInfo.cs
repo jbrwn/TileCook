@@ -19,7 +19,15 @@ namespace TileCook
             _description = "";
             _maxzoom = 14;
             _bounds = new double[] {-180, -90, 180, 90};
+            Format = TileFormat.Pbf;
+            Scheme = TileScheme.Tms;
+            VectorLayers = new List<VectorLayer>();
+            
         }
+
+        public TileFormat Format { get; set; }
+        public TileScheme Scheme { get; set; }
+        public IEnumerable<VectorLayer> VectorLayers { get; set; }
         
         public string Name 
         { 
@@ -146,25 +154,63 @@ namespace TileCook
             }
         }
         
-        public IEnumerable<VectorLayer> VectorLayers { get; set; }
-        
-        public virtual void Validate()
+        public bool IsValid()
         {
             if (_minzoom > _maxzoom)
             {
-                throw new InvalidOperationException("MinZoom cannot be greater than MaxZoom");
+                return false;
             }
             if (_center != null)
             {
                 if (_center[0] < _bounds[0] || _center[0] > _bounds[2] || _center[1] < _bounds[1] || _center[1] > _bounds[3])
                 {
-                    throw new InvalidOperationException("Center must fall within Bounds");
+                     return false;
                 }
                 if (_center[2] < _minzoom || _center[2] > _maxzoom)
                 {
-                    throw new InvalidOperationException("Center zoom must fall within MinZoom and MaxZoom");
+                     return false;
                 }
             }
+            if (Format == TileFormat.Pbf && VectorLayers == null)
+            {
+                return false;
+            }
+            return true;
+        }
+        
+        public TileInfo DeepClone()
+        {
+            var other = new TileInfo();
+            
+            other.Name = Name;
+            other.Description = Description;
+            other.MinZoom = MinZoom;
+            other.MaxZoom = MaxZoom;
+            other.Bounds = (double[])Bounds.Clone();
+            other.Center = Center != null ? (double[])Center.Clone() : null;
+            other.Format = Format;
+            other.Scheme = Scheme;
+            if (VectorLayers != null)
+            {
+                other.VectorLayers = new List<VectorLayer>();
+                foreach (var layer in VectorLayers)
+                {
+                    var otherLayer = new VectorLayer()
+                    {
+                        Id = layer.Id,
+                        Description = layer.Description
+                    };
+                    if (layer.Fields != null)
+                    {
+                        otherLayer.Fields = new Dictionary<string, string>();
+                        foreach (KeyValuePair<string, string> item in layer.Fields)
+                        {
+                            otherLayer.Fields[item.Key] = item.Value;
+                        }
+                    }
+                }
+            }
+            return other;
         }
     }
 }

@@ -9,11 +9,11 @@ namespace TileCook.Test
 {
     public class MockStore : ITileStore
     {
-        public ITile GetTile(int z, int x, int y)
+        public Tile GetTile(int z, int x, int y)
         {
             return new Tile(new byte[0]);
         }
-        public ITileInfo GetTileInfo()
+        public TileInfo GetTileInfo()
         {
             return new TileInfo()
             {
@@ -27,7 +27,7 @@ namespace TileCook.Test
     public class MockWritableStore : IWritableTileStore
     {
         public int Count {get; private set;}
-        public ITile GetTile(int z, int x, int y)
+        public Tile GetTile(int z, int x, int y)
         {
             return new Tile(new byte[0]);
         }
@@ -36,11 +36,11 @@ namespace TileCook.Test
             Count++;
             return;
         }
-        public ITileInfo GetTileInfo()
+        public TileInfo GetTileInfo()
         {
             return new TileInfo();
         }
-        public void SetTileInfo(ITileInfo tileinfo)
+        public void SetTileInfo(TileInfo tileinfo)
         {
             
         }
