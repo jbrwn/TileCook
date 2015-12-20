@@ -57,5 +57,14 @@ namespace TileCook.Test
             source.Copy(target);
             Assert.Equal(1365, target.Count);
         }
+
+        [Fact]
+        public void CopyWithParams()
+        {
+            MockStore source = new MockStore();
+            MockWritableStore target = new MockWritableStore();
+            source.Copy(target, new double[] {-180, -90, 180, 90}, 1, 2);
+            Assert.Equal(20, target.Count);
+        }
     }
 }
