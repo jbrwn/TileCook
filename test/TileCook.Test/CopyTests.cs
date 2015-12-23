@@ -66,5 +66,21 @@ namespace TileCook.Test
             source.Copy(target, new double[] {-180, -90, 180, 90}, 1, 2);
             Assert.Equal(20, target.Count);
         }
+        
+        [Fact]
+        public void CopyWithProgress()
+        {
+            MockStore source = new MockStore();
+            MockWritableStore target = new MockWritableStore();
+            var info = source.GetTileInfo();
+            var progress = new Progress<int>(ops =>
+            {
+                Assert.Equal(0, ops % 100);
+            });
+            
+            var copyTask = Task.Run(() => source.Copy(target, info.Bounds, info.MinZoom, info.MaxZoom, progress));
+            copyTask.Wait();
+            
+        }
     }
 }

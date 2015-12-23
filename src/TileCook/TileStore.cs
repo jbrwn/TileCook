@@ -1,4 +1,5 @@
-﻿using TileProj;
+﻿using System;
+using TileProj;
 
 namespace TileCook
 {
@@ -13,6 +14,12 @@ namespace TileCook
         
         public static void Copy(this ITileStore source, IWritableTileStore target, double[] bounds, int minzoom, int maxzoom)
         {
+            source.Copy(target, bounds, minzoom, maxzoom, null);
+        }
+        
+        
+        public static void Copy(this ITileStore source, IWritableTileStore target, double[] bounds, int minzoom, int maxzoom, IProgress<int> progress)
+        {
             // set target metadata
             var info = source.GetTileInfo();
             info.Bounds = bounds;
@@ -21,6 +28,7 @@ namespace TileCook
             target.SetTileInfo(info);
             
             //scanline
+            int ops = 0;
             SphericalMercator sm = new SphericalMercator();
             for (int i = info.MinZoom; i <= info.MaxZoom; i++)
             {
@@ -37,6 +45,11 @@ namespace TileCook
                         if (tile != null)
                         {
                             target.PutTile(i, j, k, tile);
+                            ops++;
+                            if (progress != null && ops % 100 == 0)
+                            {
+                                progress.Report(ops);
+                            }
                         }
                     }
                 }
