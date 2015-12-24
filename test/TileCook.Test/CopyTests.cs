@@ -73,9 +73,10 @@ namespace TileCook.Test
             MockStore source = new MockStore();
             MockWritableStore target = new MockWritableStore();
             var info = source.GetTileInfo();
-            var progress = new Progress<int>(ops =>
+            var progress = new Progress<double>(pct =>
             {
-                Assert.Equal(0, ops % 100);
+                Assert.True(pct >= 0);
+                Assert.True(pct <= 100);
             });
             
             var copyTask = Task.Run(() => source.Copy(target, info.Bounds, info.MinZoom, info.MaxZoom, progress));
